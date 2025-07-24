@@ -1,0 +1,244 @@
+/* default  */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* day mode */
+body[data-mode="day"] {
+    background-color: #fef3bd;
+}
+
+/* night mode */
+body[data-mode="night"] {
+    background-color: #0d1b2a;
+}
+
+/* Weather Card */
+.weather-card {
+    position: relative;
+    z-index: 1;
+    width: 360px;
+    height: 600px;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Background overlay effect */
+.weather-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 10px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #00cfff, #ffe15d);
+    -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+    mask: 
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Mode Background */
+.weather-card[data-mode="day"] {
+    background: url(assets/day-mountain.png) no-repeat center bottom;
+    background-size: cover;
+    background-color: #fef3bd;
+}
+
+.weather-card[data-mode="night"] {
+    background: url(assets/night-mountain.png) no-repeat center bottom;
+    background-size: cover;
+    background-color: #0d1b2a;
+}
+
+
+.weather-card[data-mode="day"]::before {
+    background: linear-gradient(135deg, #00cfff, #ffe15d);
+}
+
+.weather-card[data-mode="night"]::before {
+    background: linear-gradient(135deg, #59ccca, #003466);
+}
+
+/* weather top */
+.weather-top{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.weather-top .city {
+    font-size: 38px;
+    font-weight: 400;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+}
+
+.weather-top .date {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 7px 0;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+}
+
+.weather-top .details-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 80px;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 6px;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+}
+
+/*weather center */
+.weather-center {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 120px;
+}
+
+.weather-center .weather-icon {
+    font-size: 52px;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+}
+
+.temperature {
+    font-size: 36px;
+    color: white;
+}
+.sun, .moont{
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        position: absolute;
+        top: 160px;
+        left: 50%;
+        transform: translatex(-50%);
+        box-shadow: 0 0 30px;
+        animation: pulse 3s ease-in-out infinite;
+        z-index: 0;
+        display: none;
+        transition: 0.5s ease;
+
+}
+.sun {
+  background: #fff8b0;
+  box-shadow: 0 0 30px #ffd700;
+}
+
+.moon {
+  background: #fff;
+  box-shadow: 0 0 30px #fff;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 30px currentColor;
+  }
+  50% {
+    box-shadow: 0 0 40px currentColor;
+  }
+}
+
+/* container weather day */
+.weather-bottom{
+    position: absolute;
+    width: 340px;
+    bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    overflow-x: scroll  ;
+    padding: 10px;
+    font-weight: bold;
+}
+
+/* card weather day */
+.weather-day1,
+.weather-day2,
+.weather-day3,
+.weather-day4,
+.weather-day5,
+.weather-day6,
+.weather-day7{
+    border: 1px solid #fff;
+    border-radius: 20px;
+    height: 130px;
+    min-width: 100px;
+    padding: 5px;
+}
+
+.weather-emoji1,
+.weather-emoji2,
+.weather-emoji3,
+.weather-emoji4,
+.weather-emoji5,
+.weather-emoji6,
+.weather-emoji7
+{
+    font-size: 30pt;
+}
+
+/* berfungsi untuk membuat scrollbar terlihat setipis mungkin*/
+::-webkit-scrollbar {
+    width: 1px;
+}
+
+/* bagian luar dari scroll bar */
+::-webkit-scrollbar-track {
+  background: #ffffff37;
+  border-radius: 20px;
+
+}
+
+
+/* bagian dalam dari scroll bar */
+::-webkit-scrollbar-thumb {
+  background: #d0d0d0b3;
+  border-radius: 20px;
+}
+
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #d1d1d1;
+  border-radius: 10px;
+}
+
+
+
+
+
+
+.weather-temperature{
+    margin-top: 15px;
+    font-size: larger;
+}.weather-logo{
+    margin: 0px;
+}
+.weather-bottom{
+    display: flex;
+}
